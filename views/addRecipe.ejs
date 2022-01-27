@@ -1,0 +1,41 @@
+<%- include("partials/header.ejs", authenticated, user) %>
+
+<div class="pattern pt-4">
+  <div class="card mt-3" id="search">
+    <h1 class="card-title">Add a Recipe</h1>
+    <form action="/addRecipe">
+    
+
+    Recipe Name:
+    <input type="text" class="input-group-prepend" name="name" required><br><br>
+
+    Time (in minutes):
+    <input type="text" class="input-group-prepend" name="time" required><br><br>
+
+    Category:
+    <br>
+      <% categories.forEach( function(cat) { %>
+        <input type="radio" name="category" value="<%=cat.category%>" required> <%=cat.category%>
+      <% }) %>
+    <br><br>
+
+    Ingredients:
+    <textarea name="ingredients" class="form-control" cols="60" rows="6" required></textarea> <br><br>
+
+    Directions:
+    <textarea name="directions" class="form-control" cols="60" rows="6" required></textarea> <br><br>
+
+    Photo URL:
+    <input class="input-group-prepend" type="text" name="photo"><br><br>
+
+    <button name="formSubmitted"> Add Recipe </button>
+
+    </form>
+  </div>
+</div>
+
+<% if(recipeAdded) { %>  
+    <h3>Recipe added!</h3>
+<% } %>
+
+<%- include("partials/footer.ejs") %>
