@@ -1,0 +1,15 @@
+<%- include("partials/header.ejs", authenticated, user) %>
+
+<div class="pattern pt-4">
+<form method="POST">
+<div class="card" id="login">
+  Username: <input type="text" name="username" class="input-group-prepend"> <br><br>
+  Password: <input type="password" name="password" class="input-group-prepend"> <br><br>
+  <button class="btn btn-secondary">Login</button>
+    
+</form>
+
+<%= error %>
+</div>
+</div>
+<%- include("partials/footer.ejs") %>
