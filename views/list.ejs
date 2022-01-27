@@ -1,0 +1,106 @@
+<%- include("partials/header.ejs", authenticated, user) %>
+  <div class="pattern pt-4">
+
+  <div class="d-flex justify-content-center">
+   <h5 class="text-center" id='pill_recipe'> Your Saved Recipes, <%=user.name%> </h5>
+  </div>
+     
+    <div class="row row-cols-3 mx-auto">
+
+
+
+       <% results.forEach( function(i) { %>
+
+             <div class="col d-flex justify-content-center ">
+        <div class="card custom-card" >
+        <div class="card-body">
+
+             <div class="d-flex ">   
+              <img src="<%=i.photo%>" width=150px height=150px>
+
+
+              <div class="d-flex flex-column justify-content-start ml-3"> 
+                            <h5 class="card-title mt-4"> <%=i.name%> </h5>
+                            <p> <i class="fas fa-hourglass-half mr-2"></i>Preperation:  <em> <%=i.time%> minutes</em> </p>
+                     
+              </div>
+             </div>
+              
+  
+                     <div class='w-100 mt-3'>      
+                              <button onclick="removeFromList( <%=i.recipeId%>)" class="btn w-100 btn-block remove_recipe_button"> 
+                                <i class="fas fa-trash-alt "></i> Remove From List 
+                              </button>
+                            </div>
+              <button  data-toggle="modal" data-target="#modal_<%=i.recipeId%>" id="<%=i.recipeId%>"  class="btn-block btn custom-home-buttons mt-3"> <i class="fas fa-utensils"></i> Open Recipe</button>
+
+        
+        </div>
+      </div>
+
+   
+      </div>
+
+      <!-- Modal -->
+      <div class="modal fade" id="modal_<%=i.recipeId%>" tabindex="-1" aria-labelledby="<%=i.recipeId%>" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+
+            <div class="modal-header">
+              <h5 class="modal-title" id="<%=i.recipeId%>">Recipe Info</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+
+            <div class="modal-body">
+              <div id="recipeInfo">
+              
+              <%=i.name%>
+              <br><br>
+              Time: <%=i.time%> minutes
+              <br><br>
+              Ingredients:
+              <br>
+              <%=i.ingredients%>
+              <br><br>
+              Directions:
+              <br>
+              <%=i.directions%>
+              <br><br>
+        
+              </div>
+            </div>
+
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+
+  <% }) %>
+  </div>
+
+
+      </div>
+
+ </div>
+ </div>
+<script>
+  const removeFromList = async (recipeId) => {
+
+    const urlParams = new URLSearchParams(window.location.search);
+    const userId = urlParams.get('userId');
+    const results = await fetch(`https://allrecipes2-final-project.linmcafe.repl.co/list?userId=${userId}&recipeId=${recipeId}`, { method: 'DELETE'});
+
+    console.log(results)
+    
+    if(results.status === 200) {
+      location.reload();
+    }
+  }
+</script>
+<%- include("partials/footer.ejs") %>
