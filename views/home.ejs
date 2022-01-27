@@ -1,0 +1,46 @@
+<%- include("partials/header.ejs", authenticated, user) %>
+
+  
+<div class="pattern pt-4">
+<div class="row row-cols-1 row-cols-md-2">
+  <div class="col mb-4">
+    <div class="card customHome">
+      <img src="img/lunch.svg" alt="Girl in a jacket" class="card-img-top hi" >
+      <div class="card-body">
+        <h4 class="card-title">Lunch</h4>
+        <button onclick="window.location.replace('/categories/3/recipes?catName=Lunch')" class="btn-block btn custom-home-buttons"> <i class="fas fa-utensils"></i> Go to Lunch Recipes</button>
+      </div>
+    </div>
+  </div>
+  <div class="col mb-4">
+    <div class="card customHome">
+      <img src="img/dinner.svg" alt="Girl in a jacket" class="card-img-top hi">
+      <div class="card-body">
+        <h4 class="card-title">Dinner</h4>
+        <button onclick="window.location.replace('/categories/4/recipes?catName=Dinner')" class="btn-block btn custom-home-buttons"> <i class="fas fa-pizza-slice"></i> Go to Dinner Recipes</button>
+      </div>
+    </div>
+  </div>
+  <div class="col mb-4">
+    <div class="card customHome">
+      <img src="img/breakfast.svg" alt="Girl in a jacket" class="card-img-top hi" > 
+      <div class="card-body">
+        <h4 class="card-title">Breakfast</h4>
+        <button onclick="window.location.replace('/categories/2/recipes?catName=Breakfast')" class="btn-block btn custom-home-buttons"> <i class="fas fa-bacon"></i> Go to Breakfast Recipes</button>
+      </div>
+    </div>
+  </div>
+  <div class="col mb-4">
+    <div class="card customHome">
+      <img src="img/snacks.svg" alt="Girl in a jacket" class="card-img-top hi">
+      <div class="card-body">
+        <h4 class="card-title">Snack</h4>
+        <button onclick="window.location.replace('/categories/1/recipes?catName=Snacks')" class="btn-block btn custom-home-buttons"> <i class="fas fa-bone"></i> Go to Snack Recipes</button>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+
+<%- include("partials/footer.ejs") %>
