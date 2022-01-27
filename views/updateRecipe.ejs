@@ -1,0 +1,42 @@
+<%- include("partials/header.ejs", authenticated, user) %>
+
+<div class="pattern pt-4">
+  <div class="card mt-3" id="search">
+    <h1 class="card-title">Add a Recipe</h1>
+    <form action="/updateRecipe">
+
+    Recipe Name:
+    <input type="text" name="name" value="<%=rows[0].name%>" required><br><br>
+
+    Time (in minutes):
+    <input type="text" name="time" value="<%=rows[0].time%>" required><br><br>
+
+    Category:
+    <br>
+      <% categories.forEach( function(cat) { %>
+        <input type="radio" name="category" value="<%=cat.category%>" required> <%=cat.category%>
+      <% }) %>
+    <br><br>
+
+    Ingredients:
+    <textarea name="ingredients" cols="60" rows="6" required><%=rows[0].ingredients%></textarea> <br><br>
+
+    Directions:
+    <textarea name="directions" cols="60" rows="6" required><%=rows[0].directions%></textarea> <br><br>
+
+    Photo URL:
+    <input type="text" name="photo" value="<%=rows[0].photo%>"><br><br>
+
+    <input type="hidden" name="recipeId" value="<%=rows[0].recipeId%>">
+
+    <button name="formSubmitted"> Update Recipe </button>
+
+    </form>
+  </div>
+</div>
+
+<% if(recipeUpdated) { %>  
+    <h3>Recipe updated!</h3>
+<% } %>
+
+<%- include("partials/footer.ejs") %>
