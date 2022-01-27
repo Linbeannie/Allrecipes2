@@ -1,0 +1,34 @@
+<%- include("partials/header.ejs", authenticated, user) %>
+<div class="pattern pt-4">
+  <div class="card mt-3" id="search">
+    <h1 class="card-title">Recipe Finder</h1>
+
+    <form action="/results" method="GET">
+
+      Keyword:
+      <input type="text" name="keyword" class="input-group-prepend"> <br>
+
+      <select name="time" class="form-control">
+        <option value="">Select Time to Prepare</option>
+        <option value="15">15 Minutes or Less</option>
+        <option value="30">30 Minutes or Less</option>
+        <option value="45">45 Minutes or Less</option>
+        <option value="60">60 Minutes or Less</option>
+        <option value="240">More than 60 Minutes</option>
+      </select>
+      <br> 
+      <select name="category" class="form-control">
+        <option value="">Select Category</option>
+          <% categories.forEach( function(i) { %>
+
+            <option value="<%=i.category%>"><%=i.category%></option>
+
+          <% }) %>
+      </select>
+      <br> 
+      <button class="btn btn-secondary">Search</button>
+
+    </form>
+  </div>
+</div>
+<%- include("partials/footer.ejs") %>
